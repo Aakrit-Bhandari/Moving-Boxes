@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Moving</title>
+    <script src="jquery-3.7.0.min.js"></script>
+  </head>
+  <body>
+    <div
+      class="grain"
+      style="
+        background-color: black;
+        border: 2px solid red;
+        height: 100px;
+        display: inline-block;
+        width: 100px;
+        left: 500px;
+        position: relative;
+      "
+    ></div>
+    <div
+      class="chain"
+      style="
+        background-color: red;
+        border: 2px solid black;
+        height: 100px;
+        left: 10px;
+        width: 100px;
+        position: absolute;
+        display: inline-block;
+      "
+    ></div>
+    <br />
+    <button id="key" style="margin-left: 50px">Click Me!</button>
+    <script>
+      $("#key").click(function () {
+        var chain = $("div.chain");
+        var grain = $("div.grain");
+
+        var chainOffset = chain.offset();
+        var grainOffset = grain.offset();
+
+        if (
+          chainOffset.left < grainOffset.left + grain.outerWidth() &&
+          chainOffset.left + chain.outerWidth() > grainOffset.left &&
+          chainOffset.top < grainOffset.top + grain.outerHeight() &&
+          chainOffset.top + chain.outerHeight() > grainOffset.top
+        ) {
+          var grainWidth = grain.outerWidth();
+          var grainHeight = grain.outerHeight();
+          chain.animate(
+            {
+              left: "+=50px",
+              width: "+=" + grainWidth + "px",
+            },
+            250
+          );
+        } else {
+          chain.animate(
+            {
+              left: "+=50px",
+            },
+            250
+          );
+        }
+      });
+    </script>
+  </body>
+</html>
