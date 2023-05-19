@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Four Button Moving</title>
+    <script src="jquery-3.7.0.min.js"></script>
+    <style>
+      .down {
+        position: relative;
+        top: 50px;
+        right: 50px;
+      }
+      .left {
+        position: relative;
+        top: 25px;
+      }
+      .right {
+        position: relative;
+        right: 55px;
+        top: 25px;
+      }
+      .move {
+        position: absolute;
+      }
+      button {
+        margin-top: 700px;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      class="move"
+      style="
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        border: 3px solid black;
+      "
+    ></div>
+    <br />
+    <button class="left">Left</button>
+    <button class="up">Upar</button>
+    <button class="down">Down</button>
+    <button class="right">Right</button>
+    <script>
+      $(".left").click(function () {
+        $("div.move").css("margin-left", "-=100px");
+      });
+      $(".down").click(function () {
+        $("div.move").css("margin-top", "+=100px");
+      });
+      $(".right").click(function () {
+        $("div.move").css("margin-left", "+=100px");
+      });
+      $(".up").click(function () {
+        $("div.move").css("margin-top", "-=100px");
+      });
+    </script>
+  </body>
+</html>
